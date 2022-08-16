@@ -1,0 +1,50 @@
+.register{
+    width: 100% !important;
+    padding-bottom: 3rem !important;
+    
+    h3 {
+        width: 100%;
+        text-align: center;
+        font-size: 35px;
+    }
+
+    form{
+        display: flex !important;
+        flex-direction: column !important;
+        max-width: 500px !important;
+        min-width: 180px !important;
+        margin: 0 auto !important;
+        font-size: larger !important;
+        font-weight: bold !important;
+        box-shadow: 0.5px 1px 1.5px;
+        border-radius: 5px;
+        padding: 1rem;
+
+        input,select,textarea{
+            width: 90%;
+            display: block;
+            outline: none;
+            border-radius: 5px;
+            margin: 0.5rem auto;
+            border: 0.05px solid white;
+            padding: 10px;
+            box-shadow: 0.5px 1px 1.5px;
+            background-color: transparent;
+            color: white;
+            font-size: large;
+        }
+        div{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            button{
+                padding: 5px 10px;
+                border-radius: 5px;
+                font-size: large;
+                border: none;
+            }
+        }
+    }
+}

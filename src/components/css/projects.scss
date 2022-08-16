@@ -1,0 +1,54 @@
+#projects{
+    padding: 1rem;
+    article{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+        h3 {
+            width: 100%;
+            text-align: center;
+            font-size: 35px;
+        }
+    .view-code{
+        width: 100px;
+        height: 30px;
+        text-align: center;
+        margin: 1rem auto;
+        font-size: larger;
+        text-decoration: none;
+        box-shadow: 0.5px 1px 1.5px;
+        border-radius: 10px;
+        padding: 5px ;
+    }
+    .view-code:hover{
+        background-color: rgba(255, 255, 255, 1);
+        color: black;
+    }
+    div{
+        max-width: 300px;
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+        border-radius: 10px;
+        box-shadow: 0.5px 1px 1.5px ;
+        margin: 0.5rem;
+        svg{
+            margin: 0.5rem auto;
+            color: green;
+        }
+        a{
+            text-decoration:none;
+            margin:10px auto ;
+            width: 100%;
+            text-align:center;
+            color: white;
+            font-size: 20px;
+        }
+        h2,p{
+            width: 100%;
+            text-align: center;
+        }
+    }
+}
