@@ -1,0 +1,13 @@
+@import '../../index.scss';
+
+.details{
+    p{
+        margin: .5em auto;
+        color: $text-secondary;
+        font-size: 1.25em;
+
+        strong{
+            color: $access-secondary;
+        }
+    }
+}

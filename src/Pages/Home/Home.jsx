@@ -1,44 +1,102 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-// import background from '../../assets/Background/background.jpg'
 import './home.scss'
 import {FaFacebookF,FaLinkedinIn,FaGithub,FaInstagram} from 'react-icons/fa'
 import {BiExit} from 'react-icons/bi'
+import { motion } from "framer-motion";
+
+
+const initial = {
+    hidden: { x: 40, opacity: 0 },
+    visible: {
+      x: 0,
+      opacity: 1
+    },
+};
+
+const exit = {
+    hidden: { x: 40, opacity: 0 },
+    visible: {
+      x: 0,
+      opacity: 1
+    },
+};
 
 function Home() {
-const [size,setSize]=useState(window.innerWidth);
-const [showMenu,setShowMenu]=useState(false)
-
-const sizeChecker =()=> setSize(window.innerWidth)
-
-const handleShowMenu =()=>setShowMenu(!showMenu)
-
-useEffect(()=>{
-    window.addEventListener('resize',sizeChecker)
-
-    return ()=>window.removeEventListener('resize',sizeChecker)
-})
 
   return (<>
-  <div className="home-container">
+    <div className="home-container">
+        <Nav active='home'/>
+        <div className="welcome">
+            <div className="intro">
+                <h1>Hi, I'm CHRIS BARTLEY</h1>
+                <h3>Web Developer</h3>
+                <p>
+                I'm Chris Bartley, a skilled web developer proficient in HTML, CSS, React JS, C#, and SQL. With a passion for creating dynamic and user-friendly web applications, I'm committed to delivering exceptional results for your project.
+                </p>
+                <div className="actions">
+                    <a href='mailto: bartleyc935@gmail.com' className='action-hire'>Hire me</a>
+                    <Link to='/contact' className='action-talk'>Let's talk</Link>
+                </div>
+            </div>
+            <div className="image-cover">
+            </div>
+        </div>
+        <Footer/>
+  </div>
+  </>
+  )
+}
+
+export default Home
+
+export const Footer=()=>{
+    return <div className="footer">
+    <a href="" target='blank'><FaFacebookF size={18}/></a>
+    <a href="" target='blank'><FaLinkedinIn size={18}/></a>
+    <a href="" target='blank'><FaGithub size={18}/></a>
+    <a href="" target='blank'><FaInstagram size={18}/></a>
+</div>
+}
+
+export const Nav = ({active}) => {
+
+    const [size,setSize]=useState(window.innerWidth);
+
+    const [showMenu,setShowMenu]=useState(false)
+
+    const sizeChecker =()=> setSize(window.innerWidth)
+
+    const handleShowMenu =()=>setShowMenu(!showMenu)
+
+    useEffect(()=>{
+        window.addEventListener('resize',sizeChecker)
+
+        return ()=>window.removeEventListener('resize',sizeChecker)
+    })
+  return (
     <div className="nav">
         <h3>Bartley</h3>{
             size>645?
         <div className="nav-links">
-            <Link to='/' className='active'>Home</Link>
-            <Link to='/about'>About</Link>
-            <Link to='/services'>Services</Link>
-            <Link to='/projects'>Projects</Link>
-            <Link to='/contact'>Contact</Link>
+            <Link to='/' className={active==='home'?'active':null}>Home</Link>
+            <Link to='/about' className={active==='about'?'active':null}>About</Link>
+            {/* <Link to='/services' className={active==='services'?'active':null}>Services</Link> */}
+            <Link to='/projects' className={active==='projects'?'active':null}>Projects</Link>
+            <Link to='/contact' className={active==='contact'?'active':null}>Contact</Link>
         </div>:<>{
             showMenu?<>
-                <div className="nav-links-hamburger">
-                    <Link to='/' className='active'>Home</Link>
-                    <Link to='/about'>About</Link>
-                    <Link to='/services'>Services</Link>
-                    <Link to='/projects'>Projects</Link>
-                    <Link to='/contact'>Contact</Link>
-                </div>
+                <motion.div variants={initial}
+                     initial="hidden"
+                     animate="visible"
+                     transition={{ ease: "easeInOut", duration: 1 }}
+                     className="nav-links-hamburger">
+                    <Link to='/'  className={active==='home'?'active':null}>Home</Link>
+                    <Link to='/about' className={active==='about'?'active':null}>About</Link>
+                    {/* <Link to='/services' className={active==='services'?'active':null}>Services</Link> */}
+                    <Link to='/projects' className={active==='project'?'active':null}>Projects</Link>
+                    <Link to='/contact' className={active==='contact'?'active':null}>Contact</Link>
+                </motion.div>
                 <BiExit size={22} className='exit' onClick={handleShowMenu}/>
             </>:<><BiExit size={22} className='reverse' onClick={handleShowMenu}/></>
             }
@@ -47,27 +105,5 @@ useEffect(()=>{
         }
 
     </div>
-    <div className="welcome">
-        <div className="intro">
-            <h1>Hi, I'm CHRIS BARTLEY</h1>
-            <h3>Web Developer</h3>
-            <p>
-            Meet Chris Bartley, a skilled web developer proficient in HTML, CSS, React JS, C#, and MySQL. With a passion for creating dynamic and user-friendly web applications, Chris is committed to delivering exceptional results for your project.
-            </p>
-        </div>
-        <div className="image-cover">
-            {/* <img src={background} alt="background" /> */}
-        </div>
-    </div>
-    <div className="footer">
-        <a href="" target='blank'><FaFacebookF size={18}/></a>
-        <a href="" target='blank'><FaLinkedinIn size={18}/></a>
-        <a href="" target='blank'><FaGithub size={18}/></a>
-        <a href="" target='blank'><FaInstagram size={18}/></a>
-    </div>
-  </div>
-  </>
   )
 }
-
-export default Home
