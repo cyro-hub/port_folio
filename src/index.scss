@@ -29,6 +29,7 @@ body{
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 ::-webkit-scrollbar {
@@ -155,7 +156,7 @@ input[type=number] {
     }
 }
 
-.home-container,.project-container,.about-container{
+.home-container,.project-container,.about-container,.contact-container{
     background-color: $access-primary;
     border-radius: 10px;
     width: 98%;
