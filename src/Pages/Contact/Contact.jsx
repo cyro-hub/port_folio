@@ -23,6 +23,8 @@ const initial1 = {
   },
 };
 
+var emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
 function Contact() {
   const [isLoading, setIsLoading] = useState(false);
   const [warning, setWarning] = useState("");
@@ -53,6 +55,11 @@ function Contact() {
         setWarning(`Fill in you ${key}`);
         return;
       }
+    }
+
+    if (!contact.email.match(emailPattern)) {
+      setWarning("Your email is in an incorrect format");
+      return;
     }
 
     setIsLoading(true);
@@ -231,7 +238,7 @@ function Contact() {
                       />
                     </span>
                   ) : (
-                    <span>Contact</span>
+                    <span>Send</span>
                   )}
                 </Link>
                 <Link to="" className="action-talk" onClick={clear}>
