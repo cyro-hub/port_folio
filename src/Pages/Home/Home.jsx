@@ -38,7 +38,7 @@ function Home() {
             animate="visible"
             transition={{ ease: "easeInOut", duration: 1 }}
             className="intro">
-            <h1>Hi, I'm CHRIS BARTLEY</h1>
+            <h1>Hi, I'm BONGBUIN CYRIL</h1>
             <h3>Web Developer</h3>
             <p>
               I'm BONGBUIN CYRIL, a skilled web developer proficient in HTML,
