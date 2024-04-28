@@ -109,7 +109,7 @@ export const Nav = ({ active }) => {
   });
   return (
     <div className="nav">
-      <h3 onClick={() => navigate("/")}>Bartley</h3>
+      <h3 onClick={() => navigate("/")}>Bong's co</h3>
       {size > 645 ? (
         <div className="nav-links">
           <Link to="/" className={active === "home" ? "active" : null}>
