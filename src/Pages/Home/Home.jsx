@@ -41,7 +41,7 @@ function Home() {
             <h1>Hi, I'm CHRIS BARTLEY</h1>
             <h3>Web Developer</h3>
             <p>
-              I'm Chris Bartley, a skilled web developer proficient in HTML,
+              I'm BONGBUIN CYRIL, a skilled web developer proficient in HTML,
               CSS, React JS, C#, and SQL. With a passion for creating dynamic
               and user-friendly web applications, I'm committed to delivering
               exceptional results for your project.
