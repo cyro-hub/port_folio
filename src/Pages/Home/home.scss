@@ -1,60 +1,75 @@
-@import '../../index.scss';
+/** @format */
 
-.home-container{
-    .welcome{
+@import "../../index.scss";
+
+.home-container {
+  height: 100vh;
+  scroll-snap-align: start;
+  .welcome {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+
+    .intro {
+      flex: 0.6;
+      h1 {
+        font-size: 3em;
+      }
+      h3 {
+        font-size: 1.75em;
+        color: $access-secondary;
+      }
+      p {
+        font-size: 1.2em;
+        color: $text-secondary;
+      }
+      .skills {
+        color: $access-secondary;
+        font-size: 1.25em;
+        padding: 8px;
+      }
+      .actions {
+        width: 100;
         display: flex;
-        flex: 1;
-        align-items: center;
-        justify-content: center;
-
-        .intro{
-            flex: .6;
-            h1{
-                font-size: 3em;
-            }
-            h3{
-                font-size: 1.75em;
-                color: $access-secondary;
-            }
-            p{
-                font-size: 1.2em;
-                color: $text-secondary;
-            }
-            .actions{
-                width: 100;
-                display: flex;
-                gap: 2em;
-                margin-top: 1em;
-                a{
-                    outline: none;
-                    padding: 1px 15px;
-                    font-family: Ravi Prakash;
-                    font-size: 1.25em;
-                    font-weight: bolder;
-                    text-decoration: none;
-                    border-radius: 5px;
-                    transition: 0.5s ease-in-out;
-                }
-                a:hover{
-                    transform: scale(1.05);
-                }
-            }
+        gap: 2em;
+        margin-top: 1em;
+        a {
+          outline: none;
+          padding: 1px 15px;
+          font-family: Ravi Prakash;
+          font-size: 1.25em;
+          font-weight: bolder;
+          text-decoration: none;
+          border-radius: 5px;
+          transition: 0.5s ease-in-out;
         }
-        .image-cover{
-            height: 60%;
-            width: 60%;
-            flex: .4;
-            background: radial-gradient(rgba(255, 255, 255, 0.007),rgba(0, 26, 44, .3),rgba(0, 26, 44, 0.995),rgb(0, 26, 44)),  url('../../assets//Background/background.png');
-            background-size: cover;
+        a:hover {
+          transform: scale(1.05);
         }
+      }
     }
+    .image-cover {
+      height: 60%;
+      width: 60%;
+      flex: 0.4;
+      background: radial-gradient(
+          rgba(255, 255, 255, 0.007),
+          rgba(0, 26, 44, 0.3),
+          rgba(0, 26, 44, 0.995),
+          rgb(0, 26, 44)
+        ),
+        url("../../assets//Background/background.png");
+      background-size: cover;
+    }
+  }
 }
 
 @media screen and (max-width: $medium) {
-    .welcome{
-        flex-direction: column;
-        .image-cover{
-            display: none;
-        }
+  .welcome {
+    flex-direction: column;
+    .image-cover {
+      display: none;
     }
+  }
 }
