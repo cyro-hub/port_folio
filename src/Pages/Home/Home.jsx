@@ -1,3 +1,5 @@
+/** @format */
+
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./home.scss";
@@ -29,38 +31,39 @@ const initial1 = {
 function Home() {
   return (
     <>
-      <div className="home-container">
-        <Nav active="home" />
-        <div className="welcome">
+      <div className='home-container'>
+        <Nav active='home' />
+        <div className='welcome'>
           <motion.div
             variants={initial}
-            initial="hidden"
-            animate="visible"
+            initial='hidden'
+            animate='visible'
             transition={{ ease: "easeInOut", duration: 1 }}
-            className="intro">
+            className='intro'>
             <h1>Hi, I'm BONGBUIN CYRIL</h1>
             <h3>Web Developer</h3>
             <p>
-              I'm BONGBUIN CYRIL, a skilled web developer proficient in HTML,
-              CSS, React JS, C#, and SQL. With a passion for creating dynamic
-              and user-friendly web applications, I'm committed to delivering
-              exceptional results for your project.
+              I'm BONGBUIN CYRIL, a skilled web developer proficient in
+              <span className='skills'>MERN Stack developer</span>
+              With a passion for creating dynamic and user-friendly web
+              applications, I'm committed to delivering exceptional results for
+              your project.
             </p>
-            <div className="actions">
-              <a href="mailto: bartleyc935@gmail.com" className="action-hire">
+            <div className='actions'>
+              <a href='mailto: bartleyc935@gmail.com' className='action-hire'>
                 Hire me
               </a>
-              <Link to="/contact" className="action-talk">
+              <Link to='/contact' className='action-talk'>
                 Let's talk
               </Link>
             </div>
           </motion.div>
           <motion.div
             variants={initial1}
-            initial="hidden"
-            animate="visible"
+            initial='hidden'
+            animate='visible'
             transition={{ ease: "easeInOut", duration: 1 }}
-            className="image-cover"></motion.div>
+            className='image-cover'></motion.div>
         </div>
         <Footer />
       </div>
@@ -72,16 +75,16 @@ export default Home;
 
 export const Footer = () => {
   return (
-    <div className="footer">
+    <div className='footer'>
       {/* <a href="" target="blank">
         <FaFacebookF size={18} />
       </a> */}
       <a
-        href="https://www.linkedin.com/in/chris-bartley-11750b274/"
-        target="blank">
+        href='https://www.linkedin.com/in/chris-bartley-11750b274/'
+        target='blank'>
         <FaLinkedinIn size={18} />
       </a>
-      <a href="https://github.com/cyro-hub" target="blank">
+      <a href='https://github.com/cyro-hub' target='blank'>
         <FaGithub size={18} />
       </a>
       {/* <a href="" target="blank">
@@ -108,24 +111,24 @@ export const Nav = ({ active }) => {
     return () => window.removeEventListener("resize", sizeChecker);
   });
   return (
-    <div className="nav">
+    <div className='nav'>
       <h3 onClick={() => navigate("/")}>Bong's co</h3>
       {size > 645 ? (
-        <div className="nav-links">
-          <Link to="/" className={active === "home" ? "active" : null}>
+        <div className='nav-links'>
+          <Link to='/' className={active === "home" ? "active" : null}>
             Home
           </Link>
-          <Link to="/about" className={active === "about" ? "active" : null}>
+          <Link to='/about' className={active === "about" ? "active" : null}>
             About
           </Link>
           {/* <Link to='/services' className={active==='services'?'active':null}>Services</Link> */}
           <Link
-            to="/projects"
+            to='/projects'
             className={active === "projects" ? "active" : null}>
             Projects
           </Link>
           <Link
-            to="/contact"
+            to='/contact'
             className={active === "contact" ? "active" : null}>
             Contact
           </Link>
@@ -136,35 +139,35 @@ export const Nav = ({ active }) => {
             <>
               <motion.div
                 variants={initial}
-                initial="hidden"
-                animate="visible"
+                initial='hidden'
+                animate='visible'
                 transition={{ ease: "easeInOut", duration: 1 }}
-                className="nav-links-hamburger">
-                <Link to="/" className={active === "home" ? "active" : null}>
+                className='nav-links-hamburger'>
+                <Link to='/' className={active === "home" ? "active" : null}>
                   Home
                 </Link>
                 <Link
-                  to="/about"
+                  to='/about'
                   className={active === "about" ? "active" : null}>
                   About
                 </Link>
                 {/* <Link to='/services' className={active==='services'?'active':null}>Services</Link> */}
                 <Link
-                  to="/projects"
+                  to='/projects'
                   className={active === "project" ? "active" : null}>
                   Projects
                 </Link>
                 <Link
-                  to="/contact"
+                  to='/contact'
                   className={active === "contact" ? "active" : null}>
                   Contact
                 </Link>
               </motion.div>
-              <BiExit size={22} className="exit" onClick={handleShowMenu} />
+              <BiExit size={22} className='exit' onClick={handleShowMenu} />
             </>
           ) : (
             <>
-              <BiExit size={22} className="reverse" onClick={handleShowMenu} />
+              <BiExit size={22} className='reverse' onClick={handleShowMenu} />
             </>
           )}
         </>

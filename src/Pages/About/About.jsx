@@ -1,3 +1,5 @@
+/** @format */
+
 import React from "react";
 import { Footer, Nav } from "../Home/Home";
 import "./about.scss";
@@ -13,19 +15,22 @@ const initial = {
 
 function About() {
   return (
-    <div className="about-container">
-      <Nav active="about" />
+    <div className='about-container'>
+      <Nav active='about' />
       <motion.div
-        className="details"
+        className='details'
         variants={initial}
-        initial="hidden"
-        animate="visible"
+        initial='hidden'
+        animate='visible'
         transition={{ ease: "easeInOut", duration: 1 }}>
         <p>
           I am a skilled web developer with a passion for creating dynamic and
           engaging web applications. With expertise in{" "}
-          <strong>React JS, C# and SQL with studying php</strong>, I am
-          committed to working and learning on my own.
+          <strong>
+            HTML, CSS, Javascript, Typescript, React JS, Express js for backend
+            and mongodb for database. Git for version control
+          </strong>
+          , I am committed to working and learning on my own.
         </p>
         <p>
           My interest in web development started during my college years, where

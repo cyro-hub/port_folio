@@ -1,13 +1,15 @@
-@import '../../index.scss';
+/** @format */
 
-.details{
-    p{
-        margin: .5em auto;
-        color: $text-secondary;
-        font-size: 1.25em;
+@import "../../index.scss";
 
-        strong{
-            color: $access-secondary;
-        }
+.details {
+  p {
+    margin: 0.5em auto;
+    color: $text-secondary;
+    font-size: 1.5em;
+
+    strong {
+      color: $access-secondary;
     }
+  }
 }
