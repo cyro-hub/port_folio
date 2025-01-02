@@ -1,7 +1,7 @@
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import ClearButton from "../components/ClearButton";
-import Section from "../home/components/Section";
+import Section from "../components/Section";
 
 function Services() {
   return (

@@ -1,8 +1,8 @@
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
-import Section from "../home/components/Section";
 import AnimatedButton from "../components/AccentButton";
 import SearchBox from "../components/SearchBox";
+import Section from "../components/Section";
 
 function Blog() {
   function onSubmit(query: string) {

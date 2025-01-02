@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { BiLogoMongodb } from "react-icons/bi";
 import { RiNodejsLine } from "react-icons/ri";
 import { SiExpress, SiReact, SiTypescript } from "react-icons/si";
-import Section from "./Section";
+import Section from "@/pages/components/Section";
 
 const AboutMe: React.FC = () => {
   // Define animation variants

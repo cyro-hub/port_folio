@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import AnimatedButton from "@/pages/components/AccentButton";
-import Section from "./Section";
+import Section from "@/pages/components/Section";
 
 const HeroSection = () => {
   return (

@@ -1,7 +1,7 @@
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
-import Section from "../home/components/Section";
 import AnimatedButton from "../components/AccentButton";
+import Section from "../components/Section";
 
 function Warehouse() {
   return (

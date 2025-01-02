@@ -1,4 +1,4 @@
-import Section from "./Section";
+import Section from "@/pages/components/Section";
 
 function Testinomial() {
   return <Section>sdfsdfas</Section>;

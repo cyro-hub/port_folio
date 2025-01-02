@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import imageUrl from "@/assets/about-me-image.jpg";
-import SomeErrorCorrector from "./SomeErrorCorrector";
+import SomeErrorCorrector from "../../components/SomeErrorCorrector";
 import { Form } from "@/components/ui/form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -9,7 +9,7 @@ import FormInput from "@/pages/components/Input";
 import FormTextArea from "@/pages/components/TextArea";
 import AnimatedButton from "@/pages/components/AccentButton";
 import ClearButton from "@/pages/components/ClearButton";
-import { useEffect, useState } from "react";
+import { forwardRef, useEffect, useState } from "react";
 import { useLoading } from "@/contextApi/LoadingContext";
 import { toast } from "sonner";
 
@@ -25,7 +25,7 @@ export const contactSchema = z.object({
   }),
 });
 
-function Contact() {
+const Contact = forwardRef<HTMLDivElement, {}>((_, ref) => {
   const form = useForm<z.infer<typeof contactSchema>>({
     resolver: zodResolver(contactSchema),
     defaultValues: { name: "", email: "", message: "" },
@@ -57,7 +57,10 @@ function Contact() {
   }
 
   return (
-    <section className="relative h-screen max-w-[1500px] m-auto flex items-center justify-center scroll-snap-align-start snap-center">
+    <section
+      ref={ref}
+      className="relative h-screen max-w-[1500px] m-auto flex items-center justify-center scroll-snap-align-start snap-center"
+    >
       <div
         className="section-content rounded-2xl bg-cover bg-center bg-no-repeat w-full h-full relative flex items-center justify-center"
         style={{
@@ -72,7 +75,7 @@ function Contact() {
           viewport={{ once: true }}
         >
           <h2 className="text-lg text-yellow-400 text-bold pb-4">
-            Contact Bongbuin
+            Contact Me
           </h2>
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
@@ -91,6 +94,6 @@ function Contact() {
       </div>
     </section>
   );
-}
+});
 
 export default Contact;
