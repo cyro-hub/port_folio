@@ -1,14 +1,14 @@
 import imageUrl from "@/assets/about-me-image.jpg";
-import { useEffect, useState } from "react";
+import { forwardRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Project from "./components/Project";
 import ActionButton from "@/pages/components/ActionButton";
 import generateSeriesOfNumbers from "@/utils/generateArrayOfNumbers";
 import projects from "@/data/projects";
 import IProject from "@/@types/project";
+import SomeErrorCorrector from "@/pages/components/SomeErrorCorrector";
 
-export default function Projects() {
-
+const Projects = forwardRef<HTMLDivElement, {}>((_, ref) => {
   const [positionIndexes, setPositionIndexes] = useState(
     generateSeriesOfNumbers(projects.length)
   );
@@ -35,7 +35,10 @@ export default function Projects() {
   }, [projects]);
 
   return (
-    <section className="relative h-screen max-w-[1500px] m-auto flex items-center justify-center scroll-snap-align-start snap-center">
+    <section
+      ref={ref}
+      className="relative h-screen max-w-[1500px] m-auto flex items-center justify-center scroll-snap-align-start snap-center"
+    >
       <div
         className="section-content rounded-2xl bg-cover bg-center bg-no-repeat w-full h-full relative flex items-center justify-center"
         style={{
@@ -69,6 +72,9 @@ export default function Projects() {
           <ActionButton buttonText="Next" onClick={handleNext} />
         </div>
       </div>
+      <SomeErrorCorrector />
     </section>
   );
-}
+});
+
+export default Projects;

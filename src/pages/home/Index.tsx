@@ -10,16 +10,22 @@ import Testinomial from "./components/Testinomial";
 export default function Home() {
   const contactRef = useRef<HTMLDivElement>(null);
 
-  const scrollToSection = () => {
+  const scrollToContact = () => {
     contactRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const projectRef = useRef<HTMLDivElement>(null);
+
+  const scrollToProjects = () => {
+    projectRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
     <div className="w-full h-[100vh] scroll-snap-y snap-mandatory snap-y overflow-y-scroll">
-      <Nav refFn={scrollToSection} />
-      <HeroSection />
+      <Nav refFn={scrollToContact} />
+      <HeroSection refFn={scrollToProjects} />
       <AboutMe />
-      <Projects />
+      <Projects ref={projectRef} />
       <Testinomial />
       <Contact ref={contactRef} />
       <Footer />

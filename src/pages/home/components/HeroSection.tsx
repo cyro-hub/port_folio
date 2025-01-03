@@ -2,7 +2,11 @@ import { motion } from "framer-motion";
 import AnimatedButton from "@/pages/components/AccentButton";
 import Section from "@/pages/components/Section";
 
-const HeroSection = () => {
+interface NavProps {
+  refFn?: () => void;
+}
+
+const HeroSection: React.FC<NavProps> = ({ refFn }) => {
   return (
     <Section>
       {" "}
@@ -31,6 +35,7 @@ const HeroSection = () => {
         </motion.h1>
         <AnimatedButton
           buttonText="Projects"
+          onClick={refFn && (() => refFn())}
           cn={`max-w-60 mx-auto w-60 text-[1.25em]`}
         />
       </motion.div>
