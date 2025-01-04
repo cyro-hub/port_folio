@@ -4,10 +4,11 @@ import AnimatedButton from "./AccentButton";
 import { Link } from "react-router";
 
 interface NavProps {
-  refFn?: () => void;
+  refContact?: () => void;
+  refFooter?: () => void;
 }
 
-const Nav: React.FC<NavProps> = ({ refFn }) => {
+const Nav: React.FC<NavProps> = ({ refContact, refFooter }) => {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -35,6 +36,7 @@ const Nav: React.FC<NavProps> = ({ refFn }) => {
 
   const menuItems = [
     { name: "Services", uri: "/services" },
+    { name: "Experiences", uri: "/" },
     { name: "Blogs", uri: "/blogs" },
     { name: "About", uri: "/about" },
   ];
@@ -80,9 +82,9 @@ const Nav: React.FC<NavProps> = ({ refFn }) => {
 
         {/* Menu Items - Desktop */}
         <ul className="hidden md:flex gap-8 text-sm uppercase font-medium">
-          {menuItems.map((item, index) => (
-            <li key={index}>
-              <Link to={item.uri}>
+          {menuItems.map((item, index) => {
+            return item.name === "Experiences" ? (
+              <li key={index} onClick={refFooter && (() => refFooter())}>
                 <motion.div
                   className="hover:text-blue-400 cursor-pointer"
                   variants={listVariants}
@@ -92,9 +94,23 @@ const Nav: React.FC<NavProps> = ({ refFn }) => {
                 >
                   {item.name}
                 </motion.div>
-              </Link>
-            </li>
-          ))}
+              </li>
+            ) : (
+              <li key={index}>
+                <Link to={item.uri}>
+                  <motion.div
+                    className="hover:text-blue-400 cursor-pointer"
+                    variants={listVariants}
+                    initial="hidden"
+                    animate="visible"
+                    whileHover={{ scale: 1.1 }} // Hover animation for menu items
+                  >
+                    {item.name}
+                  </motion.div>
+                </Link>
+              </li>
+            );
+          })}
         </ul>
 
         {/* Mobile Menu Toggle */}
@@ -108,28 +124,39 @@ const Nav: React.FC<NavProps> = ({ refFn }) => {
           animation={buttonAnimation}
           buttonText="Contact"
           cn="hidden md:flex py-2 px-4"
-          onClick={refFn && (() => refFn())} // Call refFn without passing a ref
+          onClick={refContact && (() => refContact())} // Call refContact without passing a ref
         />
       </div>
 
       {/* Mobile Menu */}
       {isMenuOpen && (
         <ul className="md:hidden flex flex-col gap-4 text-center mt-4 text-sm uppercase font-medium p-4 rounded-xl bg-gradient-to-r from-white/10 to-white/4 backdrop-blur-lg border border-white/20">
-          {menuItems.map((item, index) => (
-            <li key={index}>
-              <Link to={item.uri}>
+          {menuItems.map((item, index) => {
+            return item.name === "Experiences" ? (
+              <li key={index} onClick={refFooter && (() => refFooter())}>
                 <div
                   className="hover:text-blue-400 cursor-pointer"
                   onClick={() => setIsMenuOpen(false)} // Close menu after selection
                 >
                   {item.name}
                 </div>
-              </Link>
-            </li>
-          ))}
+              </li>
+            ) : (
+              <li key={index}>
+                <Link to={item.uri}>
+                  <div
+                    className="hover:text-blue-400 cursor-pointer"
+                    onClick={() => setIsMenuOpen(false)} // Close menu after selection
+                  >
+                    {item.name}
+                  </div>
+                </Link>
+              </li>
+            );
+          })}
           <AnimatedButton
             buttonText="Contact"
-            onClick={refFn && (() => refFn())} // Call refFn without passing a ref
+            onClick={refContact && (() => refContact())} // Call refContact without passing a ref
           />
         </ul>
       )}

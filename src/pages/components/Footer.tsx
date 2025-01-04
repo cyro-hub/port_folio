@@ -1,14 +1,21 @@
 import { Github01Icon, Linkedin01Icon } from "hugeicons-react";
 import { motion } from "framer-motion";
 import Section from "./Section";
+import { Link, useLocation } from "react-router";
+import { forwardRef } from "react";
 
-const Footer = () => {
+const Footer = forwardRef<HTMLDivElement, {}>((_, ref) => {
   const currentYear = new Date().getFullYear();
+
+  const { pathname } = useLocation();
 
   return (
     <Section bgImage="hj">
-      <footer className="w-full lg:w-[80%] h-full flex text-gray-400 mt-auto mx-auto">
-        <div className="relative bg-white/5 container mt-auto mx-auto p-8 px-12 justify-between items-center space-y-10">
+      <footer
+        ref={ref}
+        className="w-full lg:w-[80%] h-full flex text-gray-400 mt-auto mx-auto"
+      >
+        <div className="relative bg-white/5 mt-auto mx-auto p-8 px-12 justify-between items-center space-y-10 pb-44">
           {/* <div className="bg-white/5 absolute h-full w-full"></div> */}
           <motion.div
             className="text-white mx-auto"
@@ -25,8 +32,15 @@ const Footer = () => {
               >
                 <h3 className="text-xl font-bold mb-4">Experience</h3>
                 <ul className="text-gray-400 space-y-1 text-md">
-                  <li>4+ years in Web Development</li>
-                  <li>Expertise in WMS and CMS systems</li>
+                  <li>2+ years in Web Development</li>
+                  <li className="cursor-pointer text-blue-500 hover:underline">
+                    <Link to="/warehouse">
+                      Expertise in WMS and CMS systems
+                    </Link>
+                  </li>
+                  <li className="cursor-pointer text-blue-500 hover:underline">
+                    <Link to="/barista">Barista / Bartender</Link>
+                  </li>
                   <li>Proven track record in React and TypeScript</li>
                   <li>API integrations for seamless workflows</li>
                 </ul>
@@ -68,12 +82,28 @@ const Footer = () => {
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
                 <h3 className="text-xl font-bold mb-4">About Me</h3>
-                <p className="text-gray-400 space-y-1 text-md">
-                  I'm a passionate developer with a focus on creating scalable
-                  and user-friendly software solutions. From warehouse
-                  management to interactive web applications, I aim to deliver
-                  exceptional results.
-                </p>
+                {pathname === "/barista" ? (
+                  <p className="text-gray-400 space-y-1 text-md">
+                    Passionate bartender/barista skilled in crafting drinks,
+                    delivering excellent service, and creating welcoming vibes.
+                    Dedicated to quality, connection, and ensuring every sip is
+                    memorable.
+                  </p>
+                ) : pathname === "/warehouse" ? (
+                  <p className="text-gray-400 space-y-1 text-md">
+                    Experienced warehouse professional with 4 years of expertise
+                    in inventory management, order fulfillment, and logistics.
+                    Skilled in optimizing workflows, ensuring accuracy, and
+                    meeting operational goals.
+                  </p>
+                ) : (
+                  <p className="text-gray-400 space-y-1 text-md">
+                    I'm a passionate developer with a focus on creating scalable
+                    and user-friendly software solutions. From warehouse
+                    management to interactive web applications, I aim to deliver
+                    exceptional results.
+                  </p>
+                )}
               </motion.div>
             </div>
           </motion.div>
@@ -83,6 +113,7 @@ const Footer = () => {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
+              className="cursor-pointer"
             >
               <span className="text-4xl">B</span>ONGSCO
             </motion.div>
@@ -125,6 +156,6 @@ const Footer = () => {
       </footer>
     </Section>
   );
-};
+});
 
 export default Footer;

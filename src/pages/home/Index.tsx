@@ -20,15 +20,22 @@ export default function Home() {
     projectRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const footerRef = useRef<HTMLDivElement>(null);
+
+  const scrollToFooter = () => {
+    console.log("hi")
+    footerRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <div className="w-full h-[100vh] scroll-snap-y snap-mandatory snap-y overflow-y-scroll">
-      <Nav refFn={scrollToContact} />
+      <Nav refContact={scrollToContact} refFooter={scrollToFooter} />
       <HeroSection refFn={scrollToProjects} />
       <AboutMe />
       <Projects ref={projectRef} />
       <Testinomial />
       <Contact ref={contactRef} />
-      <Footer />
+      <Footer ref={footerRef} />
     </div>
   );
 }

@@ -10,7 +10,7 @@ const Section: React.FC<{ children: React.ReactNode; bgImage?: string }> = ({
 
   useEffect(() => {
     const img = new Image();
-    img.src = imageUrl;
+    img.src = bgImage || imageUrl;
     img.onload = () => setLoaded(true);
   }, [imageUrl]);
 
