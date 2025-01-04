@@ -2,22 +2,12 @@ import { motion } from "framer-motion";
 import Section from "../components/Section";
 import Footer from "../components/Footer";
 import Nav from "../components/Nav";
-import { useNavigate } from "react-router";
-import { useRef } from "react";
 
 function About() {
-  const contactRef = useRef<HTMLDivElement>(null);
-
-  const navigate = useNavigate();
-
-  const scrollToSection = () => {
-    navigate("/", { replace: true, state: { contactRef } }); // Navigate to home page
-  };
-
   return (
     <div className="w-full h-[100vh] scroll-snap-y snap-mandatory snap-y overflow-y-scroll">
       {/* Introduction Section */}
-      <Nav refFn={scrollToSection} />
+      <Nav />
       <Section>
         <div className="text-white m-auto h-full flex flex-col justify-center max-w-4xl p-6 lg:p-12 text-center">
           {/* Heading */}
