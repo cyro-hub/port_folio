@@ -23,7 +23,6 @@ export default function Home() {
   const footerRef = useRef<HTMLDivElement>(null);
 
   const scrollToFooter = () => {
-    console.log("hi")
     footerRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 

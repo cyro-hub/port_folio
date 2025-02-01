@@ -2,11 +2,17 @@ import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import AnimatedButton from "../components/AccentButton";
 import Section from "../components/Section";
+import { useRef } from "react";
 
 function Warehouse() {
+  const footerRef = useRef<HTMLDivElement>(null);
+
+  const scrollToFooter = () => {
+    footerRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
   return (
     <div className="w-full h-screen snap-y snap-mandatory overflow-y-scroll">
-      <Nav />
+      <Nav refFooter={scrollToFooter} />
 
       {/* Hero Section */}
       <Section>
@@ -133,7 +139,7 @@ function Warehouse() {
         </div>
       </Section>
 
-      <Footer />
+      <Footer ref={footerRef} />
     </div>
   );
 }

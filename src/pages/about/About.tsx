@@ -2,12 +2,36 @@ import { motion } from "framer-motion";
 import Section from "../components/Section";
 import Footer from "../components/Footer";
 import Nav from "../components/Nav";
+import { useRef } from "react";
+
+const experiences = [
+  {
+    year: 2018,
+    accomplishment: `Started as a warehouse assistant, gaining hands-on experience in inventory management`,
+  },
+  {
+    year: 2020,
+    accomplishment: `Developed custom WMS software to streamline warehouse
+                operations.`,
+  },
+  {
+    year: 2022,
+    accomplishment: `Transitioned into full-time software development, building web
+                and mobile apps with React, Node.js, and more.`,
+  },
+];
 
 function About() {
+  const footerRef = useRef<HTMLDivElement>(null);
+
+  const scrollToFooter = () => {
+    footerRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <div className="w-full h-[100vh] scroll-snap-y snap-mandatory snap-y overflow-y-scroll">
       {/* Introduction Section */}
-      <Nav />
+      <Nav refFooter={scrollToFooter} />
       <Section>
         <div className="text-white m-auto h-full flex flex-col justify-center max-w-4xl p-6 lg:p-12 text-center">
           {/* Heading */}
@@ -73,36 +97,16 @@ function About() {
               },
             }}
           >
-            <motion.div
-              className="p-4 border-l-4 border-blue-600 bg-gray-800 rounded-md"
-              variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}
-            >
-              <h3 className="font-bold text-lg">2018</h3>
-              <p>
-                Started as a warehouse assistant, gaining hands-on experience in
-                inventory management.
-              </p>
-            </motion.div>
-            <motion.div
-              className="p-4 border-l-4 border-blue-600 bg-gray-800 rounded-md"
-              variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}
-            >
-              <h3 className="font-bold text-lg">2020</h3>
-              <p>
-                Developed custom WMS software to streamline warehouse
-                operations.
-              </p>
-            </motion.div>
-            <motion.div
-              className="p-4 border-l-4 border-blue-600 bg-gray-800 rounded-md"
-              variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}
-            >
-              <h3 className="font-bold text-lg">2022</h3>
-              <p>
-                Transitioned into full-time software development, building web
-                and mobile apps with React, Node.js, and more.
-              </p>
-            </motion.div>
+            {experiences.map((experience, i) => (
+              <motion.div
+                className="rounded-[2px] p-4 border-l-4 bg-gray-800 shadow-lg bg-slate-700/30 backdrop-blur-md border-white/10"
+                variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}
+                key={i}
+              >
+                <h3 className="font-bold text-lg">{experience.year}</h3>
+                <p>{experience.accomplishment}</p>
+              </motion.div>
+            ))}
           </motion.div>
         </div>
       </Section>
@@ -154,7 +158,7 @@ function About() {
       </Section>
 
       {/* Footer */}
-      <Footer />
+      <Footer ref={footerRef} />
     </div>
   );
 }

@@ -2,6 +2,10 @@ import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import AnimatedButton from "../components/AccentButton";
 import Section from "../components/Section";
+import { useRef } from "react";
+import useGetImages from "@/hooks/useGetImages";
+import Gallery from "../components/Gallery";
+// import TikTokEmbed from "react-tiktok-embed";
 
 function Barista() {
   const coffeeShowcase = [
@@ -19,19 +23,13 @@ function Barista() {
       image: "/images/espresso-shot.jpg",
       video: null,
     },
-    {
-      title: "Signature Coffee Recipes",
-      description:
-        "Unique and flavorful coffee recipes that bring a personal twist to traditional brews.",
-      image: null,
-      video: "https://www.youtube.com/embed/sampleSignatureCoffee", // Replace with your video link
-    },
   ];
 
   const reels = [
     {
       platform: "TikTok",
-      embedUrl: "https://www.tiktok.com/embed/sampleVideo1", // Replace with TikTok embed links
+      embedUrl:
+        "https://www.tiktok.com/@cyrilmentan/video/7461938455128460551?is_from_webapp=1&sender_device=pc",
     },
     {
       platform: "YouTube",
@@ -39,53 +37,62 @@ function Barista() {
     },
   ];
 
+  const footerRef = useRef<HTMLDivElement>(null);
+
+  const scrollToFooter = () => {
+    footerRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const { images } = useGetImages("barista latte arts");
+
+  // console.log(images);
+
   return (
     <div className="w-full h-screen snap-y snap-mandatory overflow-y-scroll">
-      <Nav />
+      <Nav refFooter={scrollToFooter} />
       {/* Hero Section */}
 
       <Section bgImage="https://images.pexels.com/photos/12438912/pexels-photo-12438912.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
         <div className="relative flex flex-col items-center justify-center mt-24 text-center p-8 lg:p-16 bg-gradient-to-b from-brown-200 via-brown-100 to-white h-[92%]">
           {/* Hero Content */}
-          <div className="relative z-10">
-            <h1 className="text-5xl font-extrabold text-brown-800 mb-4">
-              Welcome to Barista
-            </h1>
-            <p className="text-lg md:text-xl lg:text-2xl text-gray-800 mb-8">
-              Discover the art of coffee, one cup at a time.
-            </p>
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-10">
+            Welcome to Barista
+          </h1>
+          <p className="text-lg md:text-xl lg:text-2xl text-gray-300 mb-8">
+            Discover the art of coffee, one cup at a time.
+          </p>
 
-            {/* Call to Action Buttons */}
-            <div className="flex flex-wrap justify-center gap-4">
-              <button className="py-3 px-6 bg-brown-600 text-white rounded-lg hover:bg-brown-700 transition duration-200">
-                View My Recipes
-              </button>
-              <button className="py-3 px-6 bg-transparent border-2 border-brown-600 text-brown-600 rounded-lg hover:bg-brown-600 hover:text-white transition duration-200">
-                Watch My Reels
-              </button>
-            </div>
+          {/* Call to Action Buttons */}
+          <div className="flex flex-wrap justify-center gap-4">
+            <button className="py-3 px-6 hover:bg-yellow-500/50 bg-yellow-500 text-slate-900 rounded-[2px] hover:bg-brown-700 transition duration-200">
+              View My Recipes
+            </button>
+            <button className="py-3 px-6 bg-transparent border-2 border-yellow-500 text-brown-600 rounded-[2px] hover:bg-brown-600 hover:text-white text-yellow-500 transition duration-200">
+              Watch My Reels
+            </button>
           </div>
         </div>
       </Section>
 
       {/* Coffee Showcase Section */}
       <Section bgImage="https://images.pexels.com/photos/12438912/pexels-photo-12438912.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
-        <div className="flex flex-col items-center text-center p-8 lg:p-16">
+        <div className="flex flex-col h-full w-full items-center text-center p-8 lg:p-16">
           <h2 className="text-3xl font-semibold mb-8">Coffee Showcase</h2>
           <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full max-w-5xl">
-            {coffeeShowcase.map((item, index) => (
+            {coffeeShowcase?.map((item, index) => (
               <div
                 key={index}
                 className="border rounded-lg shadow-md p-6 flex flex-col"
               >
-                {item.image && (
+                {/* {item.image && (
                   <img
                     src={item.image}
                     alt={item.title}
                     className="rounded-md mb-4 h-48 w-full object-cover"
                   />
-                )}
-                {item.video && (
+                  )} */}
+                <Gallery images={images}/>
+                {/* {item.video && (
                   <iframe
                     className="rounded-md mb-4 w-full aspect-video"
                     src={item.video}
@@ -93,14 +100,14 @@ function Barista() {
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                   ></iframe>
-                )}
+                )} */}
                 <h3 className="text-2xl font-semibold mb-4">{item.title}</h3>
                 <p className="text-gray-700 mb-4">{item.description}</p>
-                <AnimatedButton
+                {/* <AnimatedButton
                   buttonText="Learn More"
                   cn="py-2 px-4 text-white"
                   onClick={() => alert(`Exploring ${item.title}!`)}
-                />
+                /> */}
               </div>
             ))}
           </div>
@@ -125,7 +132,9 @@ function Barista() {
                 </h3>
                 <iframe
                   className="rounded-md w-full aspect-video"
-                  src={reel.embedUrl}
+                  src={
+                    "https://www.tiktok.com/@cyrilmentan/video/7014473101433949441?is_from_webapp=1&sender_device=pc&web_id=7454972553682880005"
+                  }
                   title={`${reel.platform} Reel`}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
@@ -148,7 +157,7 @@ function Barista() {
           <AnimatedButton buttonText="Get in Touch" cn="py-3 px-6 text-white" />
         </div>
       </Section>
-      <Footer />
+      <Footer ref={footerRef} />
     </div>
   );
 }

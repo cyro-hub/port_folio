@@ -2,11 +2,18 @@ import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import ClearButton from "../components/ClearButton";
 import Section from "../components/Section";
+import { useRef } from "react";
 
 function Services() {
+  const footerRef = useRef<HTMLDivElement>(null);
+
+  const scrollToFooter = () => {
+    footerRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <div className="w-full h-[100vh] snap-y snap-mandatory overflow-y-scroll">
-      <Nav />
+      <Nav refFooter={scrollToFooter} />
       <Section>
         <div className="flex flex-col items-center justify-center mt-20 text-center p-8 lg:p-16">
           <p className="text-lg md:text-xl lg:text-2xl text-gray-600 mb-12">
@@ -94,7 +101,7 @@ function Services() {
           </div>
         </div>
       </Section>
-      <Footer />
+      <Footer ref={footerRef} />
     </div>
   );
 }

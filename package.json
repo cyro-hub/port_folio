@@ -17,7 +17,9 @@
     "@radix-ui/react-slot": "^1.1.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "embla-carousel": "8.5.1",
     "embla-carousel-react": "^8.5.1",
+    "firebase": "^11.2.0",
     "framer-motion": "^11.15.0",
     "hugeicons-react": "^0.3.0",
     "lucide-react": "^0.469.0",
@@ -30,14 +32,14 @@
     "react-spring": "9.7.5",
     "react-spring-3d-carousel": "1.3.4",
     "react-swiper": "^0.1.5",
+    "react-tiktok-embed": "^1.0.0",
     "sonner": "^1.7.1",
     "swiper": "^11.1.15",
     "swiper-react": "^1.0.0",
     "tailwind-merge": "^2.5.5",
     "tailwindcss-animate": "^1.0.7",
     "uuid": "11.0.3",
-    "zod": "^3.24.1",
-    "embla-carousel": "8.5.1"
+    "zod": "^3.24.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",

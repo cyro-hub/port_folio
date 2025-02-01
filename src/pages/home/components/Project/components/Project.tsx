@@ -65,8 +65,12 @@ function Project({ positionIndexes, project, index }: ChildProps) {
       }}
     >
       <div className="flex justify-around mt-auto w-full p-4 absolute bottom-[10px]">
-        <AnimatedButton buttonText="Live" cn={`py-1 px-4`} />
-        <ClearButton buttonText="Code" cn={`py-1 px-4`} />
+        <a href={project.view} target="_blanc">
+          <AnimatedButton buttonText="Live" cn={`py-1 px-4`} />
+        </a>
+        <a href={project.code} target="_blanc">
+          <ClearButton buttonText="Code" cn={`py-1 px-4`} />
+        </a>
       </div>
     </motion.div>
   );
