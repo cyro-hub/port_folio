@@ -13,6 +13,11 @@ function Barista() {
     footerRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const recipeRef = useRef<HTMLDivElement>(null);
+
+  const scrollToRecipe = () => {
+    recipeRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <div className="w-full h-screen snap-y snap-mandatory overflow-y-scroll">
@@ -31,12 +36,21 @@ function Barista() {
 
           {/* Call to Action Buttons */}
           <div className="flex flex-wrap justify-center gap-4">
-            <button className="py-3 px-6 hover:bg-yellow-500/50 bg-yellow-500 text-slate-900 rounded-[2px] hover:bg-brown-700 transition duration-200">
+            <button
+              onClick={scrollToRecipe}
+              className="py-3 px-6 hover:bg-yellow-500/50 bg-yellow-500 text-slate-900 rounded-[2px] hover:bg-brown-700 transition duration-200"
+            >
               View My Recipes
             </button>
-            <button className="py-3 px-6 bg-transparent border-2 border-yellow-500 text-brown-600 rounded-[2px] hover:bg-brown-600 hover:text-white text-yellow-500 transition duration-200">
+            <a
+              href={
+                "https://www.tiktok.com/@cyrilmentan?is_from_webapp=1&sender_device=pc"
+              }
+              target="_blanc"
+              className="py-3 px-6 bg-transparent border-2 border-yellow-500 text-brown-600 rounded-[2px] hover:bg-brown-600 hover:text-white text-yellow-500 transition duration-200"
+            >
               Watch My Reels
-            </button>
+            </a>
           </div>
         </div>
       </Section>
@@ -53,7 +67,7 @@ function Barista() {
 
       {/* Call to Action Section */}
       <Section bgImage="https://images.pexels.com/photos/12438912/pexels-photo-12438912.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
-        <RecipeSection />
+        <RecipeSection ref={recipeRef} />
       </Section>
       <Footer ref={footerRef} />
     </div>

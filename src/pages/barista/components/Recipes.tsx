@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { forwardRef, useState } from "react";
 import { motion } from "framer-motion";
 
 const recipes = [
@@ -25,9 +25,12 @@ const recipes = [
   },
 ];
 
-export default function RecipeSection() {
+const RecipeSection = forwardRef<HTMLDivElement, {}>((_, ref) => {
   return (
-    <div className="flex flex-col h-full w-full justify-center items-center text-center p-8 pt-20 lg:p-16">
+    <div
+      ref={ref}
+      className="flex flex-col h-full w-full justify-center items-center text-center p-8 pt-20 lg:p-16"
+    >
       <h2 className="text-3xl font-semibold">Recipes</h2>
       <p className="text-lg text-gray-400 mb-12">
         Discover my favorite coffee recipes and learn how to make them yourself.
@@ -36,7 +39,7 @@ export default function RecipeSection() {
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
-        className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full max-w-5xl m-auto"
+        className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full max-w-5xl overflow-y-auto"
       >
         {recipes.map((recipe, index) => (
           <RecipeCard key={index} recipe={recipe} />
@@ -44,7 +47,7 @@ export default function RecipeSection() {
       </motion.div>
     </div>
   );
-}
+});
 
 function RecipeCard({ recipe }: { recipe: (typeof recipes)[0] }) {
   const [expanded, setExpanded] = useState(false);
@@ -85,3 +88,5 @@ function RecipeCard({ recipe }: { recipe: (typeof recipes)[0] }) {
     </motion.div>
   );
 }
+
+export default RecipeSection;
