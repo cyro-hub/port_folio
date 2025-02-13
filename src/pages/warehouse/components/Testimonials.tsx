@@ -54,7 +54,7 @@ const TestimonialSection = () => {
       >
         Recognizing excellence in coffee craftsmanship.
       </motion.p>
-      <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full max-w-5xl overflow-y-auto">
+      <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full max-w-5xl overflow-y-auto pb-8">
         {testimonials.map((testimonial, index) => (
           <motion.div
             key={index}
@@ -73,7 +73,11 @@ const TestimonialSection = () => {
             <FaAward size={100} className="mb-4" />
             <h3 className="text-xl font-semibold mb-2">{testimonial.award}</h3>
             <p className="text-gray-300 mb-4">Awarded in {testimonial.year}</p>
-            <div className="flex items-center gap-4 mt-4">
+            <a
+              className="flex items-center gap-4 mt-4 hover:bg-gray-400/10 rounded-[4px]"
+              href={testimonial.linkedin}
+              target="_blank"
+            >
               <LazyLoadImage
                 alt={testimonial.manager}
                 src={testimonial.managerPhoto}
@@ -83,16 +87,14 @@ const TestimonialSection = () => {
                 <p className="text-gray-200">
                   Managed by {testimonial.manager}
                 </p>
-                <a
-                  href={testimonial.linkedin}
-                  target="_blank"
+                <span
                   rel="noopener noreferrer"
                   className="text-blue-400 flex items-center gap-1 hover:text-blue-500"
                 >
                   <FaLinkedin /> LinkedIn
-                </a>
+                </span>
               </div>
-            </div>
+            </a>
           </motion.div>
         ))}
       </div>
