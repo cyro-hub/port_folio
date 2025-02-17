@@ -9,9 +9,9 @@ import FormInput from "@/pages/components/Input";
 import FormTextArea from "@/pages/components/TextArea";
 import AnimatedButton from "@/pages/components/AccentButton";
 import ClearButton from "@/pages/components/ClearButton";
-import { forwardRef, useEffect, useState } from "react";
-import { useLoading } from "@/contextApi/LoadingContext";
-import { toast } from "sonner";
+import { forwardRef, useState } from "react";
+import useSetDoc from "@/hooks/useSetDoc";
+import Message from "@/@types/Message";
 
 export const contactSchema = z.object({
   name: z.string().min(1, {
@@ -30,31 +30,18 @@ const Contact = forwardRef<HTMLDivElement, {}>((_, ref) => {
     resolver: zodResolver(contactSchema),
     defaultValues: { name: "", email: "", message: "" },
   });
-  const [isLoading, setIsLoading] = useState(false);
 
-  const { setLoading } = useLoading();
+  const [message] = useState<Message>({
+    loading: "Loading...",
+    success: "Thank you for reaching out!",
+    error: "Failed to sent",
+  });
 
-  useEffect(() => {
-    if (isLoading) {
-      setLoading(true);
-    } else {
-      setLoading(false);
-    }
-  }, [setLoading, isLoading]);
+  const { setDocument } = useSetDoc("contacts", message, form);
 
-  function onSubmit(values: z.infer<typeof contactSchema>) {
-    setIsLoading(true);
-
-    console.log(values);
-
-    toast("Event has been created", {
-      description: "Sunday, December 03, 2023 at 9:00 AM",
-      action: {
-        label: "Undo",
-        onClick: () => console.log("Undo"),
-      },
-    });
-  }
+  const onSubmit = async (values: z.infer<typeof contactSchema>) => {
+    await setDocument(null, values);
+  };
 
   return (
     <section
@@ -74,9 +61,7 @@ const Contact = forwardRef<HTMLDivElement, {}>((_, ref) => {
           transition={{ duration: 0.6, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-          <h2 className="text-lg text-yellow-400 text-bold pb-4">
-            Contact Me
-          </h2>
+          <h2 className="text-lg text-yellow-400 text-bold pb-4">Contact Me</h2>
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
               <FormInput name="name" form={form} type="text" label="Name" />
